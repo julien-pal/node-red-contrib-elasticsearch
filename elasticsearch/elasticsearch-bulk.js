@@ -34,7 +34,6 @@ module.exports = function (RED) {
                         }
                     }
                                  
-                    console.log("bulkConfig", bulkConfig)   
                     serverConfig.client.bulk(bulkConfig).then(function (resp) {
                         msg.payload = resp;
                         node.send(msg);

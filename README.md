@@ -14,11 +14,11 @@ Provides a wrapper for Elasticsearch node client.
 
 Run the following command in the root directory of your Node-RED install
 
-    npm install node-red-contrib-elasticsearch
+    npm install node-red-contrib-elasticsearch-jupalcf
 
 Run the following command for global install
 
-    npm install -g node-red-contrib-elasticsearch
+    npm install -g node-red-contrib-elasticsearch-jupalcf
 
 
 [1]:https://nodered.org

@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-elasticsearch-jupalcf",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "elasticsearch Wrapper for NodeRed",
 	"main": "grpc.js",
 	"node-red": {

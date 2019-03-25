@@ -12,22 +12,30 @@ module.exports = function (RED) {
             } else {
                 node.status({});
                 node.on("input", function (msg) {
-                    config.index = config.index || msg.index;
-                    config.esType = config.esType || msg.type;
-                    config.esId = config.esId || msg.id;
-
                     var deleteConfig = {
                         "index": config.index,
                         "type": config.esType,
                         "body" : msg.payload
                     }
 
+                    if (msg.index) {
+                        deleteConfig.index = msg.index;
+                    }
+
+                    if (msg.type) {
+                        deleteConfig.type = msg.esType;
+                    }
+
+                    if (msg.id) {
+                        deleteConfig.id = msg.id;
+                    }       
+                    
                     if (config.esId || msg.payload._id) {
                         deleteConfig.id = config.esId || msg.payload._id;
                         if (msg.payload._id) delete msg.payload._id;
                     }
 
-                    if (!config.esId ) {
+                    if (!deleteConfig.esId ) {
                         node.status({ fill: "red", shape: "dot", text: "No id to delete ..." });
                     } else {
                         serverConfig.client.delete(deleteConfig).then(function (resp) {

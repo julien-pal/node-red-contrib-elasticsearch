@@ -12,21 +12,24 @@ module.exports = function (RED) {
             } else {
                 node.status({});
                 node.on("input", function (msg) {
-                    config.index = config.index || msg.index;
-                    config.esType = config.esType || msg.type;
-                    config.query = config.query || msg.query;
-
                     var bulkConfig = {
+                        index : config.index,
+                        type : config.type,
+                        query : msg.query,
                         body : []
                     };
 
-                    if (config.index) {
-                        bulkConfig.index = config.index;
+                    if (msg.index) {
+                        bulkConfig.index = msg.index;
                     }
 
-                    if (config.esType) {
-                        bulkConfig.type = config.esType;
+                    if (msg.type) {
+                        bulkConfig.type = msg.type;
                     }
+
+                    if (msg.id) {
+                        bulkConfig.id = msg.id;
+                    }       
                     
                     if (msg.payload && msg.payload.length > 0) {
                         for (var i in msg.payload) {

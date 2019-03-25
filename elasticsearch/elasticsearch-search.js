@@ -11,22 +11,27 @@ module.exports = function (RED) {
             } else {
                 node.status({});
                 node.on("input", function (msg) {
-
-                    config.index = config.index || msg.index;
-                    config.esType = config.esType || msg.type;
-                    config.query = config.query || msg.query;
-                    config.scroll = config.scroll || msg.scroll;
-
                     var searchConfig = {
                         "index": config.index,
                         "type": config.esType,
                         "body": config.query
                     }
 
-                    if (config.scroll) {
+                    if (config.scroll || msg.scroll) {
                         searchConfig.scroll = "1m";
                     }
 
+                    if (msg.index) {
+                        searchConfig.index = msg.index;
+                    }
+
+                    if (msg.type) {
+                        searchConfig.type = msg.type;
+                    }
+
+                    if (msg.query) {
+                        searchConfig.body = msg.query;
+                    }                           
                     msg.payload = [];
                     serverConfig.client.search(searchConfig).then(function (resp) {
                         (function next(resp) {

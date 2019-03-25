@@ -13,21 +13,29 @@ module.exports = function (RED) {
                 node.status({});
 
                 node.on("input", function (msg) {
-                    config.index = config.index || msg.index;
-                    config.esType = config.esType || msg.type;
-                    config.esId = config.esId || msg.payload._id;
-            
                     var indexConfig = {
                         "index": config.index,
                         "type": config.esType,
                         "body" : msg.payload
                     }
 
-                    if (config.esId || msg.payload._id) {
-                        indexConfig.id = config.esId || msg.payload._id;
-                        if (msg.payload._id) delete msg.payload._id;
+                    if (msg.index) {
+                        indexConfig.index = msg.index;
                     }
 
+                    if (msg.esType) {
+                        indexConfig.type = msg.esType;
+                    }
+
+                    if (msg.id) {
+                        indexConfig.id = msg.id;
+                    }
+
+                    if (msg.payload._id) {
+                        indexConfig.id = msg.payload._id;
+                        delete msg.payload._id;
+                    }            
+                  
                     serverConfig.client.index(indexConfig).then(function (resp) {
                         msg.payload = resp;
                         node.send(msg);
@@ -52,7 +60,7 @@ module.exports = function (RED) {
                 done();
             });
         } catch (err) {
-            node.error("elasticsearchGetNode" + err);
+            node.error("elasticsearchIndexNode" + err);
             console.log(err);
         }
     }

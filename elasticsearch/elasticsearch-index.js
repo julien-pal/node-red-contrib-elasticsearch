@@ -15,7 +15,7 @@ module.exports = function (RED) {
                 node.on("input", function (msg) {
                     config.index = config.index || msg.index;
                     config.esType = config.esType || msg.type;
-                    config.esId = config.esId || msg.id;
+                    config.esId = config.esId || msg.payload._id;
             
                     var indexConfig = {
                         "index": config.index,
@@ -28,9 +28,6 @@ module.exports = function (RED) {
                         if (msg.payload._id) delete msg.payload._id;
                     }
 
-                    console.log("config.esId", config.esId)
-                    console.log(" msg.payload._id",  msg.payload._id)
-                    console.log("indexConfig", indexConfig)
                     serverConfig.client.index(indexConfig).then(function (resp) {
                         msg.payload = resp;
                         node.send(msg);

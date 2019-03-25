@@ -30,7 +30,6 @@ module.exports = function (RED) {
                     if (!config.esId ) {
                         node.status({ fill: "red", shape: "dot", text: "No id to delete ..." });
                     } else {
-                        console.log("deleteConfig", deleteConfig)
                         serverConfig.client.delete(deleteConfig).then(function (resp) {
                             msg.payload = resp;
                             node.send(msg);

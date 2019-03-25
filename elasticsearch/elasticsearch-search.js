@@ -27,7 +27,6 @@ module.exports = function (RED) {
                         searchConfig.scroll = "1m";
                     }
 
-                    console.log("searchConfig", searchConfig)
                     msg.payload = [];
                     serverConfig.client.search(searchConfig).then(function (resp) {
                         (function next(resp) {

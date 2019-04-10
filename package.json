@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-elasticsearch-jupalcf",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "elasticsearch Wrapper for NodeRed",
 	"main": "grpc.js",
 	"node-red": {
@@ -10,7 +10,8 @@
 			"elasticsearch-search": "elasticsearch/elasticsearch-search.js",
 			"elasticsearch-bulk": "elasticsearch/elasticsearch-bulk.js",
 			"elasticsearch-index": "elasticsearch/elasticsearch-index.js",
-			"elasticsearch-delete": "elasticsearch/elasticsearch-delete.js"
+			"elasticsearch-delete": "elasticsearch/elasticsearch-delete.js",
+			"elasticsearch-deleteByQuery": "elasticsearch/elasticsearch-deleteByQuery.js"
 		}
 	},
 	"repository": {

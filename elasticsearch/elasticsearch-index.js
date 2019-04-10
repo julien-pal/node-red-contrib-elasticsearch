@@ -15,7 +15,7 @@ module.exports = function (RED) {
                 node.on("input", function (msg) {
                     var indexConfig = {
                         "index": config.index,
-                        "type": config.esType,
+                        "type":  config.esType,
                         "body" : msg.payload
                     }
 
@@ -35,7 +35,6 @@ module.exports = function (RED) {
                         indexConfig.id = msg.payload._id;
                         delete msg.payload._id;
                     }            
-                  
                     serverConfig.client.index(indexConfig).then(function (resp) {
                         msg.payload = resp;
                         node.send(msg);

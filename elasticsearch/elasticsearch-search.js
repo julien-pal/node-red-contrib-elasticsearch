@@ -43,6 +43,10 @@ module.exports = function (RED) {
                                     var obj = resp.hits.hits[i]._source;
                                     obj._id = resp.hits.hits[i]._id;
                                     msg.payload.push(obj);
+                                    if (msg.payload.length % config.bulkSize == 0) {
+                                        node.send(msg);
+                                        msg.payload = [];
+                                    }
                                 }
                                 if (!config.scroll) {
                                     node.send(msg);

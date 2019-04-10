@@ -24,6 +24,10 @@
         <label for="node-input-scroll" style="width: 110px;"><i class="fa fa-tag"></i> Scroll</label>
         <input type="checkbox" id="node-input-scroll" placeholder="Scroll">
     </div>
+    <div class="form-row">
+        <label for="node-input-bulkSize" style="width: 110px;"><i class="fa fa-tag"></i>Scroll bulk size</label>
+        <input type="number" id="node-input-bulkSize" placeholder="Scroll bulk size">
+    </div>
 </script>
 
 <script type="text/x-red" data-help-name="elasticsearch-search">
@@ -38,6 +42,8 @@
         <dd>If not configured in the node, this optional property sets the query to send.</dd>
         <dt class="optional">scroll <span class="property-type">boolean</span></dt>
         <dd>If not configured in the node, this optional property sets if we scroll on the results.</dd>
+        <dt class="optional">scroll bulk size<span class="property-type">number</span></dt>
+        <dd>Define the number of result to wait before sending a message (default wait all results).</dd>
     </dl>
     <h3>Outputs</h3>
     <dl class="message-properties">
@@ -58,7 +64,8 @@
             index: { value: "" },
             esType: { value: "" },
             query: { value: "" },
-            scroll: { value: false }
+            scroll: { value: false },
+            bulkSize: { value: null }
         },
         inputs: 1,
         outputs: 1,

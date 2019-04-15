@@ -64,8 +64,9 @@ module.exports = function (RED) {
                             }
                         }(resp));
                     }, function (err) {
-                        console.log(err.message);
+                        node.error(err.message);
                         msg.payload = [];
+                        msg.error = err;
                         node.send(msg);
                     });
                 });

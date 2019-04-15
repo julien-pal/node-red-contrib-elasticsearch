@@ -37,8 +37,7 @@ module.exports = function (RED) {
                             msg.payload = resp;
                             node.send(msg);
                         }, function (err) {
-                            node.log("elasticsearchDeleteByQueryNode" + err);
-                            console.log(err);
+                            node.error("elasticsearchDeleteByQueryNode" + err);
                             msg.payload = err;
                             node.send(msg);
                         });

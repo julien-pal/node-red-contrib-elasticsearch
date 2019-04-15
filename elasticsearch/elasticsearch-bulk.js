@@ -41,6 +41,7 @@ module.exports = function (RED) {
                         msg.payload = resp;
                         node.send(msg);
                     }, function (err) {
+                        node.error(error)
                         msg.payload = err;
                         node.send(msg);
                     });

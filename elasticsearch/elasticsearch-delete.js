@@ -42,8 +42,7 @@ module.exports = function (RED) {
                             msg.payload = resp;
                             node.send(msg);
                         }, function (err) {
-                            node.log("elasticsearchDeleteNode" + err);
-                            console.log(err);
+                            node.error("elasticsearchDeleteNode" + err);
                             msg.payload = err;
                             node.send(msg);
                         });

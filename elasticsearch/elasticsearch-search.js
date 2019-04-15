@@ -31,7 +31,12 @@ module.exports = function (RED) {
 
                     if (msg.query) {
                         searchConfig.body = msg.query;
-                    }                           
+                    }               
+                    
+                    if (msg.bulkSize) {
+                        searchConfig.bulkSize = msg.bulkSize;
+                    }
+
                     msg.payload = [];
                     serverConfig.client.search(searchConfig).then(function (resp) {
                         (function next(resp) {
@@ -43,24 +48,26 @@ module.exports = function (RED) {
                                     var obj = resp.hits.hits[i]._source;
                                     obj._id = resp.hits.hits[i]._id;
                                     msg.payload.push(obj);
-                                    if (msg.payload.length % config.bulkSize == 0) {
+                                    if (msg.payload.length % searchConfig.bulkSize == 0) {
                                         node.send(msg);
                                         msg.payload = [];
                                     }
                                 }
-                                if (!config.scroll) {
+                                if (!searchConfig.scroll) {
                                     node.send(msg);
                                     return;
                                 }
                             }
 
-                            if (config.scroll) {
+                            if (searchConfig.scroll) {
                                 var scrollId = resp._scroll_id;
                                 // issue the next request
                                 serverConfig.client.scroll({
                                     scroll: '1m',
-                                    body: scrollId
-                                }).then(next);
+                                    scrollId: scrollId
+                                })
+                                .then(next, (err) => node.error("Scroll error : " + err))
+                                
                             }
                         }(resp));
                     }, function (err) {

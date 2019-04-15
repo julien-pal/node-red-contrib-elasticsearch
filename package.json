@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-elasticsearch-jupalcf",
-	"version": "1.0.8",
+	"version": "1.1.0",
 	"description": "elasticsearch Wrapper for NodeRed",
 	"main": "grpc.js",
 	"node-red": {
@@ -23,7 +23,7 @@
 		"elasticsearch"
 	],
 	"dependencies": {
-		"elasticsearch": "^15.2.0"
+		"elasticsearch": "^15.0.0"
 	},
 	"author": "Julien Pal",
 	"license": "ISC"

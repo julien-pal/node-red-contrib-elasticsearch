@@ -48,7 +48,6 @@ module.exports = function (RED) {
 
             node.on("error", function (error) {
                 node.error("elasticsearchIndexNode Error - " + error);
-                console.log(error);
             });
 
             node.on("close", function (done) {
@@ -59,7 +58,6 @@ module.exports = function (RED) {
             });
         } catch (err) {
             node.error("elasticsearchIndexNode" + err);
-            console.log(err);
         }
     }
 

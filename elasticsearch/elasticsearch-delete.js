@@ -52,7 +52,6 @@ module.exports = function (RED) {
 
             node.on("error", function (error) {
                 node.error("elasticsearchDeleteNode Error - " + error);
-                console.log(error);
             });
 
             node.on("close", function (done) {
@@ -63,7 +62,6 @@ module.exports = function (RED) {
             });
         } catch (err) {
             node.error("elasticsearchDeleteNode" + err);
-            console.log(err);
         }
     }
 

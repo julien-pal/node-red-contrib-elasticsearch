@@ -74,7 +74,6 @@ module.exports = function (RED) {
 
             node.on("error", function (error) {
                 node.error("elasticsearchSearchNode Error - " + error);
-                console.log(error);
             });
 
             node.on("close", function (done) {
@@ -85,7 +84,6 @@ module.exports = function (RED) {
             });
         } catch (err) {
             node.error("elasticsearchSearchNode" + err);
-            console.log(err);
         }
     }
 

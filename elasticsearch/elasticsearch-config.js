@@ -16,13 +16,11 @@ module.exports = function (RED) {
         
         node.on("error", function(error) {
             node.error("gRPC Server Error - " + error);
-            console.log(error);
         });
 		
         node.on("close", function(done) {
             if (this.localServer) {
                 stopServer(this);
-                console.log("### gRPC server stopped ###");
             }
             done();
         });
@@ -40,7 +38,6 @@ module.exports = function (RED) {
             }
         } catch (err) {
             node.error("createClient - " + err);
-            console.log(err);
         }
     }
 	

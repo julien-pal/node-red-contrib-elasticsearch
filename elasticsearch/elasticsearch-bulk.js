@@ -51,7 +51,6 @@ module.exports = function (RED) {
 
             node.on("error", function (error) {
                 node.error("elasticsearchBulkNode Error - " + error);
-                console.log(error);
             });
 
             node.on("close", function (done) {
@@ -62,7 +61,6 @@ module.exports = function (RED) {
             });
         } catch (err) {
             node.error("elasticsearchBulkNode" + err);
-            console.log(err);
         }
     }
 
@@ -95,7 +93,6 @@ module.exports = function (RED) {
             }
         }  catch (err) {
             node.error("processData" + err);
-            console.log(err);
         }
     }
 

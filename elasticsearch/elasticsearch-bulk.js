@@ -40,7 +40,7 @@ module.exports = function (RED) {
                     serverConfig.client.bulk(bulkConfig).then(function (resp) {
                         msg.payload = resp;
                         node.send(msg);
-                    }, function (err) {
+                    }, function (error) {
                         node.error(error)
                         msg.payload = err;
                         node.send(msg);

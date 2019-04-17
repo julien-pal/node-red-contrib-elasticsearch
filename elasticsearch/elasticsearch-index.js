@@ -27,19 +27,25 @@ module.exports = function (RED) {
                         indexConfig.type = msg.esType;
                     }
 
-                    if (msg.id) {
-                        indexConfig.id = msg.id;
+                    if (msg.esId) {
+                        indexConfig.id = msg.esId;
                     }
 
                     if (msg.payload._id) {
                         indexConfig.id = msg.payload._id;
                         delete msg.payload._id;
-                    }            
+                    }   
+                    
+                    if (msg.routing) {
+                        indexConfig.routing = msg.routing;
+                    }   
+                    
+                    
                     serverConfig.client.index(indexConfig).then(function (resp) {
                         msg.payload = resp;
                         node.send(msg);
                     }, function (err) {
-                        node.error("elasticsearchIndexNode" + err);
+                        node.error("elasticsearchIndexNode " + err);
                         msg.payload = err;
                         node.send(msg);
                     });

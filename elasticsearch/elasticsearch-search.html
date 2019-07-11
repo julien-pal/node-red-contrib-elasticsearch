@@ -28,6 +28,10 @@
         <label for="node-input-bulkSize" style="width: 110px;"><i class="fa fa-tag"></i>Scroll bulk size</label>
         <input type="number" id="node-input-bulkSize" placeholder="Scroll bulk size">
     </div>
+    <div class="form-row">
+        <label for="node-input-fullResponse" style="width: 110px;"><i class="fa fa-tag"></i> Return full response</label>
+        <input type="checkbox" id="node-input-fullResponse" placeholder="Scroll">
+    </div>
 </script>
 
 <script type="text/x-red" data-help-name="elasticsearch-search">
@@ -67,7 +71,8 @@
             esType: { value: "" },
             query: { value: "" },
             scroll: { value: false },
-            bulkSize: { value: null }
+            bulkSize: { value: null },
+            fullResponse: { value: false }
         },
         inputs: 1,
         outputs: 1,

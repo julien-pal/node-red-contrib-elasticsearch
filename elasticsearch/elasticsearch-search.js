@@ -36,14 +36,16 @@ module.exports = function (RED) {
                     if (msg.bulkSize) {
                         searchConfig.bulkSize = msg.bulkSize;
                     }
+                    
 
                     msg.payload = [];
                     serverConfig.client.search(searchConfig).then(function (resp) {
                         (function next(resp) {
-                            if (!resp.hits || !resp.hits.hits || !resp.hits.hits.length) {
+                            if (!resp.hits || !resp.hits.hits || !resp.hits.hits.length || searchConfig.fullResponse) {
                                 node.send(msg);
                                 return;
                             } else {
+                              
                                 for (var i in resp.hits.hits) {
                                     var obj = resp.hits.hits[i]._source;
                                     obj._id = resp.hits.hits[i]._id;
@@ -53,6 +55,7 @@ module.exports = function (RED) {
                                         msg.payload = [];
                                     }
                                 }
+                              
                                 if (!searchConfig.scroll) {
                                     node.send(msg);
                                     return;

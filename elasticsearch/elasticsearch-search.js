@@ -41,7 +41,7 @@ module.exports = function (RED) {
                     msg.payload = [];
                     serverConfig.client.search(searchConfig).then(function (resp) {
                         (function next(resp) {
-                            if (!resp.hits || !resp.hits.hits || !resp.hits.hits.length || searchConfig.fullResponse) {
+                            if (!resp.hits || !resp.hits.hits || !resp.hits.hits.length || config.fullResponse) {
                                 msg.payload = resp;
                                 node.send(msg);
                                 return;

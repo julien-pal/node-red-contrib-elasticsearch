@@ -39,10 +39,19 @@ module.exports = function (RED) {
                     
 
                     msg.payload = [];
+                    if(config.fullResponse){
+                        msg.es_responses = [];
+                    }
+                    
                     serverConfig.client.search(searchConfig).then(function (resp) {
                         (function next(resp) {
-                            if (!resp.hits || !resp.hits.hits || !resp.hits.hits.length || config.fullResponse) {
-                                msg.payload = resp;
+                           
+
+                            if(config.fullResponse){
+                                msg.es_responses.push(resp);
+                            }
+
+                            if (!resp.hits || !resp.hits.hits || !resp.hits.hits.length) {
                                 node.send(msg);
                                 return;
                             } else {

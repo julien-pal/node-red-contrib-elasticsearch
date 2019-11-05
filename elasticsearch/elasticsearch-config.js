@@ -8,14 +8,13 @@ module.exports = function (RED) {
         RED.nodes.createNode(node, config);
 
         node.server =  config.server;
-        node.port = config.port || 9200;
         node.name = config.name;
         node.apiVersion = config.apiVersion;
 
         createClient(node);
         
         node.on("error", function(error) {
-            node.error("gRPC Server Error - " + error);
+            node.error("Elastic Server Error - " + error);
         });
 		
         node.on("close", function(done) {

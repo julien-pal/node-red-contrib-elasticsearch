@@ -42,7 +42,7 @@ module.exports = function (RED) {
                         node.send(msg);
                     }, function (error) {
                         node.error(error)
-                        msg.payload = err;
+                        msg.payload = error;
                         node.send(msg);
                     });
                 });

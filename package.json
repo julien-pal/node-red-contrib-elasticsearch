@@ -9,6 +9,7 @@
 			"elasticsearch-get": "elasticsearch/elasticsearch-get.js",
 			"elasticsearch-search": "elasticsearch/elasticsearch-search.js",
 			"elasticsearch-bulk": "elasticsearch/elasticsearch-bulk.js",
+			"elasticsearch-create-index": "elasticsearch/elasticsearch-create-index.js",
 			"elasticsearch-index": "elasticsearch/elasticsearch-index.js",
 			"elasticsearch-index-exists": "elasticsearch/elasticsearch-index-exists.js",
 			"elasticsearch-refresh-index": "elasticsearch/elasticsearch-refresh-index.js",

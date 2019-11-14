@@ -1,0 +1,50 @@
+<!-- ***************** index refresh function *********************** -->
+<script type="text/x-red" data-template-name="elasticsearch-refresh-index">
+    <div class="form-row">
+        <label for="node-input-server" style="width: 110px;"><i class="fa fa-bookmark"></i> Server</label>
+        <input type="text" id="node-input-server" placeholder="Server URL (ex. localhost:9200)">
+    </div>	
+    <div class="form-row">
+        <label for="node-input-name" style="width: 110px;"><i class="fa fa-bookmark"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>	
+    <div class="form-row">
+        <label for="node-input-name" style="width: 110px;"><i class="fa fa-bookmark"></i> Index</label>
+        <input type="text" id="node-input-index" placeholder="Index">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="elasticsearch-refresh-index">
+    <p>Refresh the specified index</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">index <span class="property-type"> String, String[], Boolean </span> </dt>
+        <dd> A comma-separated list of index names; use _all or empty string to perform the operation on all indices</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>The body of the response.</dd>
+    </dl>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('elasticsearch-refresh-index',{
+        category: 'function',
+        defaults: {
+            name: {value:""},
+            server: {type:"elasticsearch-config", required:true},
+            index: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        color: "#FFFFFF",
+        icon: "elasticsearch.png",
+        label: function() {
+            return this.name||"Elastic refresh index";
+        },
+        labelStyle: function() {
+            return (this.name)?"node_label_italic":"";
+        }
+    });
+</script>

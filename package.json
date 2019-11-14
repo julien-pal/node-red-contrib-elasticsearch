@@ -10,6 +10,7 @@
 			"elasticsearch-search": "elasticsearch/elasticsearch-search.js",
 			"elasticsearch-bulk": "elasticsearch/elasticsearch-bulk.js",
 			"elasticsearch-index": "elasticsearch/elasticsearch-index.js",
+			"elasticsearch-index-exists": "elasticsearch/elasticsearch-index-exists.js",
 			"elasticsearch-refresh-index": "elasticsearch/elasticsearch-refresh-index.js",
 			"elasticsearch-delete": "elasticsearch/elasticsearch-delete.js",
 			"elasticsearch-deleteByQuery": "elasticsearch/elasticsearch-deleteByQuery.js"

@@ -1,0 +1,69 @@
+<!-- ***************** update Register function *********************** -->
+<script type="text/x-red" data-template-name="elasticsearch-update">
+    <div class="form-row">
+        <label for="node-input-server" style="width: 110px;"><i class="fa fa-bookmark"></i> Server</label>
+        <input type="text" id="node-input-server" placeholder="Server URL (ex. localhost:9200)">
+    </div>	
+    <div class="form-row">
+        <label for="node-input-name" style="width: 110px;"><i class="fa fa-bookmark"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-index" style="width: 110px;"><i class="fa fa-tag"></i> Index</label>
+        <input type="text" id="node-input-index" placeholder="Index to request">
+    </div>
+    <div class="form-row">
+        <label for="node-input-esType" style="width: 110px;"><i class="fa fa-envelope"></i> Type</label>
+        <input type="text" id="node-input-esType" placeholder="Type to request">
+    </div>
+    <div class="form-row">
+        <label for="node-input-esId" style="width: 110px;"><i class="fa fa-tag"></i> Document id</label>
+        <input type="text" id="node-input-esId" placeholder="Document Id">
+    </div>
+    <div class="form-row">
+        <label for="node-input-routing" style="width: 110px;"><i class="fa fa-tag"></i> Routing</label>
+        <input type="text" id="node-input-routing" placeholder="Routing">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="elasticsearch-update">
+    <p>Update the payload in elasticsearch</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt class="optional">index <span class="property-type">string</span></dt>
+        <dd>If not configured in the node, this optional property sets the index to update.</dd>
+        <dt class="optional">esType <span class="property-type">string</span></dt>
+        <dd>If not configured in the node, this optional property sets the type to update.</dd>
+        <dt class="optional">esId <span class="property-type">string</span></dt>
+        <dd>If not configured in the node, this optional property sets the id to update. If not set, check msg.payload._id</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>The body of the response.</dd>
+    </dl>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('elasticsearch-update',{
+        category: 'function',
+        defaults: {
+            name: {value:""},
+            server: {type:"elasticsearch-config",required:true},
+            index: {value:""},
+            esType: {value:""},
+            esId: {value:""},
+            routing: {value:""}  
+        },
+        inputs:1,
+        outputs:1,
+        color: "#FFFFFF",
+        icon: "elasticsearch.png",
+        label: function() {
+            return this.name||"Elastic Update";
+        },
+        labelStyle: function() {
+            return (this.name)?"node_label_italic":"";
+        }
+    });
+</script>

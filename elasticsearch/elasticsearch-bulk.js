@@ -74,9 +74,7 @@ module.exports = function (RED) {
     
             switch(actionType) {
                 case 'update': 
-                    action = {
-                        doc : current.data
-                    }
+                    action = current.data
                     break;
                 case 'delete': 
                     action = null;

@@ -9,6 +9,11 @@ module.exports = function (RED) {
 
         node.server =  config.server;
         node.name = config.name;
+        if(config.timeout) {
+            node.timeout = config.timeout;
+        } else {
+            node.timeout = 30000;
+        }
         node.apiVersion = config.apiVersion;
 
         createClient(node);
@@ -32,6 +37,7 @@ module.exports = function (RED) {
                     hosts : [ 
                         node.server
                     ],
+		    requestTimeout: node.timeout,
                     apiVersion: node.apiVersion
                 });
             }

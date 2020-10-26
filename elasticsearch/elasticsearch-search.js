@@ -33,8 +33,8 @@ module.exports = function (RED) {
                         searchConfig.body = msg.query;
                     }               
                     
-                    if (msg.bulkSize) {
-                        searchConfig.bulkSize = msg.bulkSize;
+                    if (msg.size) {
+                        searchConfig.size = msg.size;
                     }
                     
 
@@ -60,7 +60,7 @@ module.exports = function (RED) {
                                     var obj = resp.hits.hits[i]._source;
                                     obj._id = resp.hits.hits[i]._id;
                                     msg.payload.push(obj);
-                                    if (msg.payload.length % searchConfig.bulkSize == 0) {
+                                    if (msg.payload.length % searchConfig.size == 0) {
                                         node.send(msg);
                                         msg.payload = [];
                                     }

@@ -34,6 +34,7 @@ module.exports = function (RED) {
                         searchConfig.body = msg.query;
                     }
                     
+                    searchConfig.size = 10;
                     if (config.size) {
                         searchConfig.size = config.size;
                     }

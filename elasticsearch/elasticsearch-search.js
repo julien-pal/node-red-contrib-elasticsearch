@@ -14,7 +14,8 @@ module.exports = function (RED) {
                     var searchConfig = {
                         "index": config.index,
                         "type": config.esType,
-                        "body": config.query
+                        "body": config.query,
+                        "size": config.size
                     }
 
                     if (config.scroll || msg.scroll) {
@@ -31,8 +32,17 @@ module.exports = function (RED) {
 
                     if (msg.query) {
                         searchConfig.body = msg.query;
-                    }               
+                    }
                     
+                    searchConfig.size = 10;
+                    if (config.size) {
+                        searchConfig.size = config.size;
+                    }
+
+                    if (msg.size) {
+                        searchConfig.size = msg.size;
+                    }
+
                     if (msg.bulkSize) {
                         searchConfig.bulkSize = msg.bulkSize;
                     }

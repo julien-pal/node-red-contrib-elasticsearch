@@ -22,7 +22,7 @@ module.exports = function (RED) {
           };
 
           if (config.esType) {
-            indexConfig.type = config.esType;
+            searchConfig.type = config.esType;
           }
 
           if (config.scroll || msg.scroll) {

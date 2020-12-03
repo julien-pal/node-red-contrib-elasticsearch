@@ -22,7 +22,7 @@ module.exports = function (RED) {
           };
 
           if (config.esType) {
-            indexConfig.type = config.esType;
+            getConfig.type = config.esType;
           }
 
           if (msg.index) {

@@ -25,6 +25,10 @@
         <input type="number" id="node-input-size" placeholder="Size">
     </div>
     <div class="form-row">
+        <label for="node-input-from" style="width: 110px;"><i class="fa fa-tag"></i>From</label>
+        <input type="number" id="node-input-from" placeholder="From">
+    </div>
+    <div class="form-row">
         <label for="node-input-scroll" style="width: 110px;"><i class="fa fa-tag"></i> Scroll</label>
         <input type="checkbox" id="node-input-scroll" placeholder="Scroll">
     </div>
@@ -49,7 +53,9 @@
         <dt class="optional">query <span class="property-type">object</span></dt>
         <dd>If not configured in the node, this optional property sets the query to send.</dd>
         <dt class="optional">size <span class="property-type">number</span></dt>
-        <dd>If not configured in the node, this optional property sets the results count.</dd
+        <dd>If not configured in the node, this optional property sets the results count.</dd>
+        <dt class="optional">from <span class="property-type">number</span></dt>
+        <dd>If not configured in the node, this optional property sets the offset.</dd>
         <dt class="optional">scroll <span class="property-type">boolean</span></dt>
         <dd>If not configured in the node, this optional property sets if we scroll on the results.</dd>
         <dt class="optional">scroll bulk size<span class="property-type">number</span></dt>

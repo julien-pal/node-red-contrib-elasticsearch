@@ -19,6 +19,7 @@ module.exports = function (RED) {
             index: config.index,
             body: config.query,
             size: config.size,
+            from: config.from,
           };
 
           if (config.esType) {
@@ -52,6 +53,10 @@ module.exports = function (RED) {
 
           if (msg.size) {
             searchConfig.size = msg.size;
+          }
+
+          if (msg.from) {
+            searchConfig.from = msg.from;
           }
 
           if (msg.bulkSize) {

@@ -17,8 +17,12 @@
         <input type="text" id="node-input-esType" placeholder="Type to request">
     </div>
     <div class="form-row">
-        <label for="node-input-esId" style="width: 110px;"><i class="fa fa-tag"></i> Document id</label>
-        <input type="text" id="node-input-esId" placeholder="Document Id">
+        <label for="node-input-id" style="width: 110px;"><i class="fa fa-tag"></i> Document id</label>
+        <input type="text" id="node-input-id" placeholder="Document Id">
+    </div>
+    <div class="form-row">
+        <label for="node-input-routing" style="width: 110px;"><i class="fa fa-tag"></i> Routing key</label>
+        <input type="text" id="node-input-routing" placeholder="Routing key">
     </div>
 </script>
 
@@ -32,6 +36,8 @@
         <dd>If not configured in the node, this optional property sets the type to request.</dd>
         <dt class="optional">id <span class="property-type">string</span></dt>
         <dd>If not configured in the node, this optional property sets the id to request.</dd>
+        <dt class="optional">routing <span class="property-type">string</span></dt>
+        <dd>If not configured in the node, this optional property sets the routing key to request.</dd>
     </dl>
     <h3>Outputs</h3>
     <dl class="message-properties">
@@ -41,24 +47,25 @@
 </script>
 
 <script type="text/javascript">
-    RED.nodes.registerType('elasticsearch-get',{
+    RED.nodes.registerType('elasticsearch-get', {
         category: 'function',
         defaults: {
-            name: {value:""},
-            server: {type:"elasticsearch-config",required:true},
-            index: {value:""},
-            esType: {value:"" },
-            esId: {value:""}  
+            name: { value: "" },
+            server: { type: "elasticsearch-config", required: true },
+            index: { value: "" },
+            esType: { value: "" },
+            id: { value: "" },
+            routing: { value: "" }
         },
-        inputs:1,
-        outputs:1,
+        inputs: 1,
+        outputs: 1,
         color: "#FFFFFF",
         icon: "elasticsearch.png",
-        label: function() {
-            return this.name||"Elastic Get";
+        label: function () {
+            return this.name || "Elastic Get";
         },
-        labelStyle: function() {
-            return (this.name)?"node_label_italic":"";
+        labelStyle: function () {
+            return (this.name) ? "node_label_italic" : "";
         }
     });
 </script>

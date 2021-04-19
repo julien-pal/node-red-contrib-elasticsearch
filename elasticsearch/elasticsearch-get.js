@@ -29,8 +29,8 @@ module.exports = function (RED) {
             getConfig.index = msg.index;
           }
 
-          if (msg.esType) {
-            getConfig.type = msg.esType;
+          if (msg.routing) {
+            getConfig.routing = msg.routing;
           }
 
           if (msg.id) {

@@ -18,7 +18,9 @@ module.exports = function (RED) {
         node.on("input", function (msg) {
           var getConfig = {
             index: config.index,
-            id: config.esId,
+            id: config.id,
+            type: config.esType,
+            routing: config.routing,
           };
 
           if (config.esType) {

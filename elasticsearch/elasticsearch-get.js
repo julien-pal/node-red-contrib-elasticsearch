@@ -23,8 +23,8 @@ module.exports = function (RED) {
             routing: config.routing,
           };
 
-          if (config.esType) {
-            getConfig.type = config.esType;
+          if (msg.type) {
+            getConfig.type = msg.esType;
           }
 
           if (msg.index) {

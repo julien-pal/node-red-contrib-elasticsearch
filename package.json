@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-elasticsearch-jupalcf",
-	"version": "1.1.24",
+	"version": "1.1.25",
 	"description": "elasticsearch Wrapper for NodeRed",
 	"main": "elasticsearch-index.js",
 	"node-red": {

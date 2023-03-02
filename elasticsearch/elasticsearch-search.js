@@ -80,7 +80,8 @@ module.exports = function (RED) {
                   return;
                 } else {
                   for (var i in resp.hits.hits) {
-                    var obj = resp.hits.hits[i]._source;
+                    var obj = {};
+                    obj._source = resp.hits.hits[i]._source;
                     obj._id = resp.hits.hits[i]._id;
                     msg.payload.push(obj);
                     if (msg.payload.length % searchConfig.bulkSize == 0) {
